@@ -3,5 +3,15 @@
 
   --app-bg: rgb(100, 47, 166);
   --link-bg: rgba(0, 0, 0, .4);
-  --link-border: rgba(0, 0, 0, .7)
+  --link-border: rgba(0, 0, 0, .7);
+  --modal-bg: rgb(100, 47, 166);
+  --modal-font-color: rgba(255, 255, 255, .6);
+  --modal-input-bg: rgba(0, 0, 0, .4);
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

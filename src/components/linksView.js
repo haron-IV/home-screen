@@ -1,28 +1,38 @@
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import './styles/linksView.css'
 import SingleLink from './singleLink'
+import AddNewLinkModal from './addNewLinkModal'
+import { addLink, selectLinks } from '../store/links'
 
-export default function linksView() {
-  const createNewLink = () => {
-    // redux :)
-    //
-    alert()
+
+export function LinksView() {
+  const links = useSelector(selectLinks)
+  const dispatch = useDispatch()
+  
+  const addNewLink = () => {
+    dispatch(addLink({
+      name: "test",
+      href: "https://google.com",
+      img: "https://www.flaticon.com/svg/static/icons/svg/1828/1828925.svg"
+    }))
   }
   return (
     <main className="links-view">
-      <div>
-        <SingleLink 
-          name="youtube"
-          href="https://youtube.com"
-          img="https://www.flaticon.com/svg/static/icons/svg/1384/1384060.svg"
-        />
-        <SingleLink 
-          name="add"
-          href=""
-          img="https://www.flaticon.com/svg/static/icons/svg/1828/1828925.svg"
-          feature={createNewLink}
-        />
+      {links.map(({name, href, img}) => <SingleLink 
+        name={name}
+        href={href}
+        img={img}
+      />)
         
-      </div>
+      }
+      <SingleLink 
+        name="add"
+        href=""
+        img="https://www.flaticon.com/svg/static/icons/svg/1828/1828925.svg"
+        feature={addNewLink}
+      />
+      <AddNewLinkModal />
     </main>
   );
 }

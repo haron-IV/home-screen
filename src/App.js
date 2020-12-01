@@ -1,13 +1,13 @@
 import React from 'react';
 // import { Counter } from './features/counter/Counter';
-import LinksView from './components/linksView'
+import { LinksView } from './components/linksView'
 import './App.css';
-import { STORAGE_NAME } from './utils'
+import { STORAGE_NAME, STORAGE_MODEL } from './utils'
 
 function App() {
   const initStorage = () => {
     if (!localStorage.getItem(STORAGE_NAME)) {
-      localStorage.setItem(STORAGE_NAME, JSON.stringify({}))
+      localStorage.setItem(STORAGE_NAME, JSON.stringify(STORAGE_MODEL))
     }
   }
   initStorage()

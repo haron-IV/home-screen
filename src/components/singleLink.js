@@ -1,6 +1,6 @@
 import './styles/singleLink.css'
 
-export default function linksView(props) {
+export default function SingleLink(props) {
   const openLink = (href) => {
     window.open(href)
   }

@@ -1,0 +1,64 @@
+.add-new-link-modal {
+  min-width: 250px;
+  max-width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: var(--modal-bg);
+  border: 2px solid var(--link-border);
+  border-radius: 3px;
+  box-shadow: 7px 7px 15px 2px rgba(0, 0, 0, .4);
+  color: var(--modal-font-color);
+}
+
+.add-new-link-modal__header {
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 10px;
+  border-bottom: 1px solid var(--link-border);
+  text-align: center;
+}
+
+.add-new-link-modal__configuration {
+  font-weight: 300;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.input-wrapper {
+  position: relative;
+  margin: 10px 0;
+}
+
+.input {
+  width: 100%;
+  background-color: var(--moadl-input-bg);
+  border: 1px solid var(--link-border);
+  border-radius: 3px;
+  padding: 5px;
+  color: var(--modal-font-color);
+  outline: transparent;
+}
+
+.input-label {
+  color: var(--link-border);
+  position: absolute;
+  left: 7px;
+  top: -7px;
+  padding: 0 4px;
+  background-color: var(--modal-bg);
+  opacity: 0;
+}
+
+.add-link-button {
+  background-color: var(--link-bg);
+  border: 2px solid var(--link-border);
+  border-radius: 3px;
+  width: 100%;
+  color: var(--modal-font-color);
+  padding: 5px;
+  outline: transparent;
+  cursor: pointer;
+}
