@@ -15,7 +15,7 @@ export function LinksView() {
       name: "test",
       href: "https://google.com",
       img: "https://www.flaticon.com/svg/static/icons/svg/1828/1828925.svg"
-    }))
+    })) //TODO: move this to addNewLinkModal component
   }
   return (
     <main className="links-view">
@@ -30,7 +30,7 @@ export function LinksView() {
         name="add"
         href=""
         img="https://www.flaticon.com/svg/static/icons/svg/1828/1828925.svg"
-        feature={addNewLink}
+        feature={addNewLink} //TODO: add open modal func
       />
       <AddNewLinkModal />
     </main>

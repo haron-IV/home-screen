@@ -24,6 +24,7 @@ export default function AddNewLinkModal() {
   }
 
   return (
+    //TODO: add condition to showing this modal
     <div className="add-new-link-modal">
       <header className="add-new-link-modal__header">
         Add new link to the list
@@ -75,7 +76,7 @@ export default function AddNewLinkModal() {
           <label className="input-label" htmlFor="icon" ref={iconLaberRef}>Icon</label>
         </div>
 
-        <input type="submit" className="add-link-button" value="Add new link" />
+        <input type="submit" className="add-link-button" value="Add new link" onClick={() => {}}/>
       </form>
     </div>
   );
