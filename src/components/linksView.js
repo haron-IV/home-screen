@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import './styles/linksView.css'
 import SingleLink from './singleLink'
 import AddNewLinkModal from './addNewLinkModal'
 import { selectLinks } from '../store/links'
-import { toggleModal, selectIsAddNewModalVisible } from '../store/appStore'
+import { toggleModal, selectIsModalVisible } from '../store/addLinkModal'
 
 
 export function LinksView() {
   const links = useSelector(selectLinks)
-  const isModalVisible = useSelector(selectIsAddNewModalVisible)
+  const isModalVisible = useSelector(selectIsModalVisible)
   const dispatch = useDispatch()
   
   const toggleModalVisibility = () => {
@@ -33,9 +33,7 @@ export function LinksView() {
         feature={toggleModalVisibility}
       />
 
-      {isModalVisible ? 
-      <AddNewLinkModal /> 
-      : null}
+      {isModalVisible ? <AddNewLinkModal /> : null}
     </main>
   );
 }
