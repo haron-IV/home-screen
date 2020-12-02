@@ -11,6 +11,15 @@
   border-radius: 3px;
   box-shadow: 7px 7px 15px 2px rgba(0, 0, 0, .4);
   color: var(--modal-font-color);
+  animation-name: fade-in;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity:  1; }
 }
 
 .add-new-link-modal__header {
@@ -52,6 +61,10 @@
   opacity: 0;
 }
 
+.control-panel {
+  display: flex;
+}
+
 .add-link-button {
   background-color: var(--link-bg);
   border: 2px solid var(--link-border);
@@ -61,4 +74,7 @@
   padding: 5px;
   outline: transparent;
   cursor: pointer;
+}
+.add-link-button:last-child {
+  margin-left: 5px;
 }

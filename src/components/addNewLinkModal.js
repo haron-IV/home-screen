@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { toggleModal } from '../store/appStore'
+import { addLink } from '../store/links'
 import './styles/addNewLinkModal.css'
-// import SingleLink from './singleLink'
-// import { addLink, selectLinks } from '../store/links'
-
 
 export default function AddNewLinkModal() {
+  const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [link, setLink] = useState('')
   const [icon, setIcon] = useState('')
@@ -22,9 +22,23 @@ export default function AddNewLinkModal() {
       ref.current.style.opacity = 0
     }
   }
+  
+  const toggleModalVisibility = e => {
+    e.preventDefault()
+    dispatch(toggleModal())
+  }
+
+  const addNewLink = e => {
+    e.preventDefault()
+    dispatch(addLink({
+      name,
+      href: link,
+      img: icon,
+    }))
+    toggleModalVisibility(e)
+  }
 
   return (
-    //TODO: add condition to showing this modal
     <div className="add-new-link-modal">
       <header className="add-new-link-modal__header">
         Add new link to the list
@@ -75,8 +89,10 @@ export default function AddNewLinkModal() {
             />
           <label className="input-label" htmlFor="icon" ref={iconLaberRef}>Icon</label>
         </div>
-
-        <input type="submit" className="add-link-button" value="Add new link" onClick={() => {}}/>
+        <div className="control-panel">
+          <input type="submit" className="add-link-button" value="Add new link" onClick={e => addNewLink(e)}/>
+          <button className="add-link-button" onClick={e => toggleModalVisibility(e)}>Cancel</button>
+        </div>
       </form>
     </div>
   );
