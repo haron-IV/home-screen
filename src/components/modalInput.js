@@ -13,6 +13,10 @@ export default function AddNewLinkModal(setValue, value, name) {
     }
   }
 
+  const setValue = (val) => {
+    
+  }
+
   return (
     <div className="input-wrapper">
       <input 

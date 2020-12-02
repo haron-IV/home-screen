@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addNewLink } from '../utils'
 
 export const linksSlice = createSlice({
   name: 'links',
@@ -8,11 +9,15 @@ export const linksSlice = createSlice({
   reducers: {
     addLink: (state, action) => {
       state.value.push(action.payload)
+      addNewLink(action.payload)
+    },
+    setLinks: (state, action) => {
+      state.value = action.payload
     }
   }
 });
 
-export const { addLink } = linksSlice.actions;
+export const { addLink, setLinks } = linksSlice.actions;
 
 export const selectLinks = state => state.links.value;
 

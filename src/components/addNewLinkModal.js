@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux'
-import { toggleModal } from '../store/appStore'
+import { toggleModal } from '../store/addLinkModal'
 import { addLink } from '../store/links'
 import './styles/addNewLinkModal.css'
 
