@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux'
 import { LinksView } from './components/linksView'
+import AppHeader from './components/appHeader'
 import { setLinks } from './store/links'
 import './App.css';
 import { STORAGE_NAME, STORAGE_MODEL, getLinks } from './utils'
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <AppHeader />
       <LinksView />
     </div>
   );
