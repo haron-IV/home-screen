@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addNewLink } from '../utils'
+import { addNewLink, setStorageLinks } from '../utils'
 
 export const linksSlice = createSlice({
   name: 'links',
@@ -13,11 +13,16 @@ export const linksSlice = createSlice({
     },
     setLinks: (state, action) => {
       state.value = action.payload
+    },
+    removeById: (state, action) => {
+      const id = action.payload
+      state.value = state.value.filter(link => link.id !== id)
+      setStorageLinks(state.value)
     }
   }
 });
 
-export const { addLink, setLinks } = linksSlice.actions;
+export const { addLink, setLinks, removeById } = linksSlice.actions;
 
 export const selectLinks = state => state.links.value;
 

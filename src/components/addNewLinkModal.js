@@ -38,6 +38,8 @@ export default function AddNewLinkModal() {
           return link.split('www')[1].replace('.', 'https://')
         }
       }
+    } else {
+      return link
     }
   }
 

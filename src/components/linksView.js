@@ -18,12 +18,13 @@ export function LinksView() {
   
   return (
     <main className="links-view">
-      {links.map(({name, href, img}, i) => <SingleLink 
+      {links.map(({name, href, img, id}, i) => <SingleLink 
         name={name}
         href={href}
         img={img}
         key={`${href}${name}`}
         index={i}
+        id={id}
       />)
       }
 

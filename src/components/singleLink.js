@@ -1,8 +1,10 @@
 import './styles/singleLink.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { removeById } from '../store/links'
 import { selectEdit } from '../store/menu'
 
 export default function SingleLink(props) {
+  const dispatch = useDispatch()
   const openLink = (href) => {
     window.open(href)
   }
@@ -23,10 +25,15 @@ export default function SingleLink(props) {
     }
   }
 
+  const removeLink = (id, e) => {
+    e.stopPropagation()
+    dispatch(removeById(id))
+  }
+
   return (
     <div className={'single-link-wrapper editing ' + getEditingClass()} onClick={ ()=> clikcFunc()}>
       {isEditing && !props.feature ?
-        <button className="delete-link-btn">
+        <button className="delete-link-btn" onClick={e => removeLink(props.id, e)}>
           <span>X</span>
         </button>
         : 

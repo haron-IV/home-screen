@@ -10,6 +10,11 @@ const addNewLink = (link) => {
   storage.links.push(link)
   setStograge(storage)
 }
+const setStorageLinks = (links) => {
+  const storage = JSON.parse(getStorage())
+  storage.links = links
+  localStorage.setItem(STORAGE_NAME, JSON.stringify(storage))
+}
 
 const uuid =() => {
   var dt = new Date().getTime();
@@ -21,4 +26,4 @@ const uuid =() => {
   return uuid;
 }
 
-export { STORAGE_NAME, STORAGE_MODEL, getStorage, getLinks, addNewLink, uuid }
+export { STORAGE_NAME, STORAGE_MODEL, getStorage, getLinks, addNewLink, uuid, setStorageLinks }
