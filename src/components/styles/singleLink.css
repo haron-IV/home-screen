@@ -61,8 +61,8 @@
 
 .editing {
   animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1.5s;
 }
 
 .editing-1 {
@@ -74,15 +74,13 @@
 }
 
 @keyframes editing-1 {
-  0% { transform: translateY(-2px) }
-  33% { transform: translateY(0) }
-  66% { transform: translateY(2px) }
-  100% { transform: translateY(0); }
+  0% { transform: translateY(2px) }
+  50% { transform: translateY(-2px) }
+  100% { transform: translateY(2px); }
 }
 
 @keyframes editing-2 {
-  0% { transform: translateY(2px) }
-  33% { transform: translateY(0) }
-  66% { transform: translateY(-2px) }
-  100% { transform: translateY(0); }
+  0% { transform: translateY(-2px) }
+  50% { transform: translateY(2px) }
+  100% { transform: translateY(-2px); }
 }
