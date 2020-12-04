@@ -1,15 +1,30 @@
-import React, { useRef, useState } from 'react';
-import { useDispatch } from 'react-redux'
-import { toggleModal } from '../store/addLinkModal'
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { selectModalType } from '../store/addLinkModal'
+import { toggleModal, selectEditingElementId } from '../store/addLinkModal'
+import { selectLinks, editLink } from '../store/links'
 import { addLink } from '../store/links'
 import { uuid } from '../utils'
 import './styles/addNewLinkModal.css'
 
 export default function AddNewLinkModal() {
   const dispatch = useDispatch()
+  const modalType = useSelector(selectModalType)
+  const editedElementId = useSelector(selectEditingElementId)
+  const links = useSelector(selectLinks)
+
   const [name, setName] = useState('')
   const [link, setLink] = useState('')
   const [icon, setIcon] = useState('')
+  useEffect(() => {
+    if (modalType === 'edit' && editedElementId !== null) {
+      const toEdit = links.filter(link => link.id === editedElementId)[0]
+      setName(toEdit.name)
+      setLink(toEdit.href)
+      setIcon(toEdit.img)
+    }
+  }, [])
+  
   const nameLabelRef = useRef()
   const linkLabelRef = useRef()
   const iconLaberRef = useRef()
@@ -43,21 +58,31 @@ export default function AddNewLinkModal() {
     }
   }
 
-  const addNewLink = e => {
+  const modalAction = e => {
     e.preventDefault()
-    dispatch(addLink({
-      name,
-      href: prepareLink(),
-      img: icon,
-      id: uuid()
-    }))
+
+    if (modalType === 'edit') {
+      dispatch(editLink({
+        name,
+        href: prepareLink(),
+        img: icon,
+        id: editedElementId
+      }))
+    } else {
+      dispatch(addLink({
+        name,
+        href: prepareLink(),
+        img: icon,
+        id: uuid()
+      }))
+    }
     toggleModalVisibility(e)
   }
 
   return (
     <div className="add-new-link-modal">
       <header className="add-new-link-modal__header">
-        Add new link to the list
+        {modalType === 'edit' ? 'Edit link' : 'Add new link to the list'}
       </header>
 
       <form className="add-new-link-modal__configuration">
@@ -107,7 +132,7 @@ export default function AddNewLinkModal() {
         </div>
 
         <div className="control-panel">
-          <input type="submit" className="add-link-button" value="Add new link" onClick={e => addNewLink(e)}/>
+          <input type="submit" className="add-link-button" value={modalType === 'edit' ? 'confirm editing' : 'Add new link'} onClick={e => modalAction(e)}/>
           <button className="add-link-button" onClick={e => toggleModalVisibility(e)}>Cancel</button>
         </div>
       </form>

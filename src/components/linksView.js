@@ -29,7 +29,7 @@ export function LinksView() {
       }
 
       <SingleLink 
-        name="add"
+        name=""
         href=""
         img="https://www.flaticon.com/svg/static/icons/svg/1828/1828925.svg"
         feature={toggleModalVisibility}

@@ -1,6 +1,7 @@
 import './styles/singleLink.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeById } from '../store/links'
+import { toggleEditingModal } from '../store/addLinkModal'
 import { selectEdit } from '../store/menu'
 
 export default function SingleLink(props) {
@@ -30,16 +31,26 @@ export default function SingleLink(props) {
     dispatch(removeById(id))
   }
 
+  const openEditWindow = (e, id) => {
+    e.stopPropagation()
+    dispatch(toggleEditingModal(id))
+  }
+
   return (
     <div className={'single-link-wrapper editing ' + getEditingClass()} onClick={ ()=> clikcFunc()}>
       {isEditing && !props.feature ?
-        <button className="delete-link-btn" onClick={e => removeLink(props.id, e)}>
-          <span>X</span>
-        </button>
+        <div>
+          <button className="link-btn link-btn--delete" onClick={e => removeLink(props.id, e)}>
+            <span>X</span>
+          </button>
+
+          <button className="link-btn link-btn--edit" onClick={e => openEditWindow(e, props.id)}>
+            <span>⚙️</span>
+          </button>
+        </div>
         : 
         ''
       }
-      
 
       <div className="single-link">
         {props.img.length > 4 ?

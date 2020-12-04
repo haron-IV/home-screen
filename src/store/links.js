@@ -18,11 +18,17 @@ export const linksSlice = createSlice({
       const id = action.payload
       state.value = state.value.filter(link => link.id !== id)
       setStorageLinks(state.value)
+    },
+    editLink: (state, action) => {
+      const { id } = action.payload
+      const idnexOfEditingLink = state.value.findIndex(link => link.id === id)
+      state.value[idnexOfEditingLink] = action.payload
+      setStorageLinks(state.value)
     }
   }
 });
 
-export const { addLink, setLinks, removeById } = linksSlice.actions;
+export const { addLink, setLinks, removeById, editLink } = linksSlice.actions;
 
 export const selectLinks = state => state.links.value;
 
