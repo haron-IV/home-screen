@@ -1,4 +1,5 @@
 import './styles/singleLink.css'
+import ReactTooltip from 'react-tooltip';
 import { useSelector, useDispatch } from 'react-redux'
 import { removeById } from '../store/links'
 import { toggleEditingModal } from '../store/addLinkModal'
@@ -37,14 +38,17 @@ export default function SingleLink(props) {
   }
 
   return (
-    <div className={'single-link-wrapper editing ' + getEditingClass()} onClick={ ()=> clikcFunc()}>
+    <div className={'single-link-wrapper editing ' + getEditingClass()} onClick={ ()=> clikcFunc()} >
+      
       {isEditing && !props.feature ?
         <div>
-          <button className="link-btn link-btn--delete" onClick={e => removeLink(props.id, e)}>
-            <span>X</span>
+          <button className="link-btn link-btn--delete" onClick={e => removeLink(props.id, e)} data-tip="remove">
+            <ReactTooltip />
+            <span>🗑</span>
           </button>
 
-          <button className="link-btn link-btn--edit" onClick={e => openEditWindow(e, props.id)}>
+          <button className="link-btn link-btn--edit" onClick={e => openEditWindow(e, props.id)} data-tip="edit">
+            <ReactTooltip />
             <span>⚙️</span>
           </button>
         </div>

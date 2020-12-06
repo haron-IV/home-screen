@@ -37,5 +37,5 @@ export function LinksView() {
 
       {isModalVisible ? <AddNewLinkModal /> : null}
     </main>
-  );
+  ); 
 }

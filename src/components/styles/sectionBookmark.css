@@ -1,0 +1,45 @@
+.section-bookmark {
+  width: 100%;
+  border-top: 1px solid  var(--modal-input-bg);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.input-wrapper {
+  width: 100%;
+  padding: 0 90px;
+}
+
+.bookmark-form {
+  width: inherit;
+  display: flex;
+}
+
+.bookmark-input {
+  width: 100%;
+  height: 45px;
+  background-color: var(--modal-input-bg);
+  border: 1px solid var(--link-border);
+  padding: 10px;
+  font-size: 17px;
+  font-weight: 100;
+  color: var(--modal-font-color);
+  outline: transparent;
+}
+
+.bookmark-submit {
+  background-color: var(--modal-input-bg);
+  border: solid var(--link-border);
+  border-width: 1px 1px 1px 0;
+  color: var(--modal-font-color);
+  padding: 10px;
+  cursor: pointer;
+  outline: transparent;
+}
+.bookmark-submit:hover {
+  background-color: var(--link-border);
+}
+.bookmark-submit:active {
+  background-color: #000;
+}

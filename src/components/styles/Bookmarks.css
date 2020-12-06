@@ -1,0 +1,26 @@
+.bookmark-list-wrapper {
+  /* padding: 0 90px; */
+  display: flex;
+  justify-content: center;
+}
+.bookmark-list {
+  list-style-type: none;
+  max-height: 200px;
+  overflow-y: scroll;
+  width: 100%;
+}
+.bookmark-list::-webkit-scrollbar {
+  background-color: var(--link-bg);
+  width: 10px;
+  border-radius: 3px;
+}
+.bookmark-list::-webkit-scrollbar-thumb {
+  background-color: var(--link-border);
+  border-radius: 3px;
+}
+.bookmark-link {
+  margin: 10px 0;
+}
+.bookmark-link a {
+  color: var(--modal-font-color);
+}

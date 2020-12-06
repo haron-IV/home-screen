@@ -2,9 +2,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux'
 import { LinksView } from './components/linksView'
 import AppHeader from './components/appHeader'
+import SectionBookmark from './components/sectionBookmark'
 import { setLinks } from './store/links'
+import { setBookmark } from './store/bookmarks'
 import './App.css';
-import { STORAGE_NAME, STORAGE_MODEL, getLinks } from './utils'
+import { STORAGE_NAME, STORAGE_MODEL, getLinks, getBookmark } from './utils'
 
 function App() {
   const initStorage = () => {
@@ -20,13 +22,20 @@ function App() {
       getLinks()
     ))
   }
+  const showBookmarkFromStorage = () => {
+    dispatch(setBookmark(
+      getBookmark()
+    ))
+  }
 
   showLinksFromStorage()
+  showBookmarkFromStorage()
 
   return (
     <div className="App">
       <AppHeader />
       <LinksView />
+      <SectionBookmark />
     </div>
   );
 }

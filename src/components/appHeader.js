@@ -13,7 +13,7 @@ export default function AppHeader(props) {
           <li className="menu__item" onClick={() => dispatch(toggleEdit())}>
             <span>
               Edit
-              {isEditing ? ' ✅' : ''}
+              {isEditing ? ' ❌' : ''}
             </span>
           </li>
         </ul>
