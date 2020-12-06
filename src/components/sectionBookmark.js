@@ -17,6 +17,7 @@ export default  function SectionBookmark() {
       }
       dispatch(addBookmark(bookmarkLink))
     } else {
+      // TODO: add modal :)
       alert('Cannot add empty link')
     }
   }
