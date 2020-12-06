@@ -27,6 +27,7 @@
   justify-content: space-between;
   padding: 5px;
   min-height: 40px;
+  cursor: pointer;
 }
 .link-alias {
   padding-right: 15px;
