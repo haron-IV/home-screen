@@ -18,8 +18,14 @@ export default  function Bookmarks() {
   return (
     <div className="bookmark-list-wrapper">
       <ul className="bookmark-list">
-        {bokmarkLinks.map( ({ link, id}) => <li key={id} className="bookmark-link">
-          <a href={link} target="_blank" rel="noreferrer" data-tip={link.length > 50 ? link : null}>{prepareLinkToShow(link)}</a>
+        {bokmarkLinks.map( ({ link, linkAlias, id}) => <li key={id} className="bookmark-link">
+          <div>
+            <span className="link-alias">{linkAlias}:</span>
+            <a href={link} target="_blank" rel="noreferrer" data-tip={link.length > 50 ? link : null}>
+              {prepareLinkToShow(link)}
+            </a>
+          </div>
+          
           {isEditing ?
             <button className="bookmark-delete" onClick={() =>  deleteLink(id)}>🗑</button> 
           : <ReactTooltip />}

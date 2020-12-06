@@ -28,6 +28,9 @@
   color: var(--modal-font-color);
   outline: transparent;
 }
+.bookmark-input-alias {
+  border-width: 1px 1px 1px 0;
+}
 
 .bookmark-submit {
   background-color: var(--modal-input-bg);

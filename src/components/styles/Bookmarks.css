@@ -26,6 +26,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 5px;
+  min-height: 40px;
+}
+.link-alias {
+  padding-right: 15px;
 }
 .bookmark-link a {
   color: var(--modal-font-color);
