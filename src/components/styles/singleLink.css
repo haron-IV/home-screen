@@ -1,8 +1,9 @@
 .single-link-wrapper {
   width: fit-content;
   text-align: center;
-  margin: 10px;
+  margin: 20px 10px;
   position: relative;
+  max-width: 68px;
 }
 
 .single-link {
@@ -40,7 +41,17 @@
 }
 
 .single-link-name {
-  margin-top: 15px;
+  display: block;
+  margin-top: 5px;
+  height: 2.2em;
+  overflow: hidden;
+  width: 100%;
+  transition: height ease-in-out 250ms;
+  position: absolute;
+}
+.single-link-wrapper:hover .single-link-name {
+  height: 4em;
+  position: absolute;
 }
 
 .link-btn {
