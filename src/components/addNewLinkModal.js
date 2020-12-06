@@ -86,7 +86,7 @@ export default function AddNewLinkModal() {
       </header>
 
       <form className="add-new-link-modal__configuration">
-        <div className="input-wrapper">
+        <div className="input-wrapper-modal">
           <input 
             className="input"
             type="text"
@@ -101,7 +101,7 @@ export default function AddNewLinkModal() {
           <label className="input-label" htmlFor="name" ref={nameLabelRef}>Name</label>
         </div>
 
-        <div className="input-wrapper">
+        <div className="input-wrapper-modal">
           <input
             className="input"
             type="text"
@@ -116,7 +116,7 @@ export default function AddNewLinkModal() {
           <label className="input-label" htmlFor="link" ref={linkLabelRef}>Link</label>
         </div>
 
-        <div className="input-wrapper">
+        <div className="input-wrapper-modal">
           <input
             className="input"
             type="text"

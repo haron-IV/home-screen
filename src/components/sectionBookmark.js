@@ -10,11 +10,15 @@ export default  function SectionBookmark() {
   const [link, setLink] = useState('')
   const addLinkToBookmark = e => {
     e.preventDefault()
-    const bookmarkLink = {
-      link,
-      id: uuid()
+    if (link.length > 5) {
+      const bookmarkLink = {
+        link,
+        id: uuid()
+      }
+      dispatch(addBookmark(bookmarkLink))
+    } else {
+      alert('Cannot add empty link')
     }
-    dispatch(addBookmark(bookmarkLink))
   }
 
   return (

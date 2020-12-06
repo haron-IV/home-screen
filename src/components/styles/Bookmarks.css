@@ -20,7 +20,17 @@
 }
 .bookmark-link {
   margin: 10px 0;
+  background-color: var(--link-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
 }
 .bookmark-link a {
   color: var(--modal-font-color);
+}
+.bookmark-delete {
+  background-color: var(--link-bg);
+  border: 1px solid var(--link-border);
+  cursor: pointer;
 }

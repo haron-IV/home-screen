@@ -7,6 +7,7 @@
   --modal-bg: rgb(100, 47, 166);
   --modal-font-color: rgba(255, 255, 255, .6);
   --modal-input-bg: rgba(0, 0, 0, .4);
+  --z-index-max: 100;
 }
 
 .App {

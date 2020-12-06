@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addBookmarkLink } from "../utils"
+import { addBookmarkLink, setBookmarkLinks } from "../utils"
 
 const initialState = {
   bookmark: []
@@ -15,11 +15,15 @@ export const bookmarkSlice = createSlice({
     },
     setBookmark: (state, action) => {
       state.bookmark = action.payload
+    },
+    removeBookmarkLink: (state, action) => {
+      state.bookmark = state.bookmark.filter(link => link.id !== action.payload)
+      setBookmarkLinks(state.bookmark)
     }
   }
 });
 
-export const { addBookmark, setBookmark } = bookmarkSlice.actions;
+export const { addBookmark, setBookmark, removeBookmarkLink} = bookmarkSlice.actions;
 
 export const selectBookmark = state => state.bookmark.bookmark;
 

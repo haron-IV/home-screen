@@ -17,6 +17,11 @@ const setStorageLinks = (links) => {
   localStorage.setItem(STORAGE_NAME, JSON.stringify(storage))
 }
 const getBookmark = () => JSON.parse(localStorage.getItem(STORAGE_NAME)).bookmark
+const setBookmarkLinks = bookmark => {
+  const storage = JSON.parse(getStorage())
+  storage.bookmark = bookmark
+  localStorage.setItem(STORAGE_NAME, JSON.stringify(storage))
+}
 const addBookmarkLink = (bookmarkLink) => {
   const storage = JSON.parse(getStorage())
   storage.bookmark.push(bookmarkLink)
@@ -33,4 +38,4 @@ const uuid =() => {
   return uuid;
 }
 
-export { STORAGE_NAME, STORAGE_MODEL, getStorage, getLinks, addNewLink, uuid, setStorageLinks, getBookmark, addBookmarkLink }
+export { STORAGE_NAME, STORAGE_MODEL, getStorage, getLinks, addNewLink, uuid, setStorageLinks, getBookmark, addBookmarkLink, setBookmarkLinks }

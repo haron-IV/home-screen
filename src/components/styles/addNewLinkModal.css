@@ -5,6 +5,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: var(--z-index-max);
 
   background-color: var(--modal-bg);
   border: 2px solid var(--link-border);
@@ -36,7 +37,7 @@
   padding: 10px;
 }
 
-.input-wrapper {
+.input-wrapper-modal {
   position: relative;
   margin: 10px 0;
 }
