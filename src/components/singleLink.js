@@ -38,7 +38,7 @@ export default function SingleLink(props) {
   }
 
   return (
-    <div className={'single-link-wrapper editing ' + getEditingClass()} onClick={ ()=> clikcFunc()} >
+    <div className={'single-link-wrapper editing ' + getEditingClass()} >
       
       {isEditing && !props.feature ?
         <div>
@@ -56,7 +56,7 @@ export default function SingleLink(props) {
         ''
       }
 
-      <div className="single-link">
+      <div className="single-link" onClick={ ()=> clikcFunc()} >
         {props.img.length > 4 ?
           <img className="single-link__img" alt="link" src={props.img} />
           :
