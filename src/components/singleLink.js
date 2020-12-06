@@ -1,6 +1,8 @@
+import React, { useRef } from 'react'
 import './styles/singleLink.css'
 import ReactTooltip from 'react-tooltip';
 import { useSelector, useDispatch } from 'react-redux'
+import Draggable from 'react-draggable'
 import { removeById } from '../store/links'
 import { toggleEditingModal } from '../store/addLinkModal'
 import { selectEdit } from '../store/menu'
@@ -8,6 +10,7 @@ import { incrementOpenedLinks } from '../store/stats'
 
 export default function SingleLink(props) {
   const dispatch = useDispatch()
+  const linkWrapper = useRef()
   const openLink = (href) => {
     window.open(href)
     dispatch(incrementOpenedLinks())
@@ -38,36 +41,41 @@ export default function SingleLink(props) {
     e.stopPropagation()
     dispatch(toggleEditingModal(id))
   }
-  // TODO: add fav link for list it better to see
-  //add drag and drop
+  const isDraggable = () => isEditing ? false : true
+  const removeAnimation = () => {
+    linkWrapper.current.classList = ['single-link-wrapper', 'react-draggable']
+  }
+  //TODO: add position like index in elements
+  // on drop update positon
   return (
-    <div className={'single-link-wrapper editing ' + getEditingClass()} >
-      
-      {isEditing && !props.feature ?
-        <div>
-          <button className="link-btn link-btn--delete" onClick={e => removeLink(props.id, e)} data-tip="remove">
-            <ReactTooltip />
-            <span>🗑</span>
-          </button>
+    <Draggable grid={[85, 105]} disabled={isDraggable()} onDrag={() => removeAnimation()} >
+      <div className={'single-link-wrapper editing ' + getEditingClass()} ref={linkWrapper}>
+        {isEditing && !props.feature ?
+          <div>
+            <button className="link-btn link-btn--delete" onClick={e => removeLink(props.id, e)} data-tip="remove">
+              <ReactTooltip />
+              <span>🗑</span>
+            </button>
 
-          <button className="link-btn link-btn--edit" onClick={e => openEditWindow(e, props.id)} data-tip="edit">
-            <ReactTooltip />
-            <span>⚙️</span>
-          </button>
-        </div>
-        : 
-        ''
-      }
-
-      <div className="single-link" onClick={ ()=> clikcFunc()} >
-        {props.img.length > 4 ?
-          <img className="single-link__img" alt="link" src={props.img} />
-          :
-          <span className="single-link__img--default">{props.name.slice(0, 1)}</span>
+            <button className="link-btn link-btn--edit" onClick={e => openEditWindow(e, props.id)} data-tip="edit">
+              <ReactTooltip />
+              <span>⚙️</span>
+            </button>
+          </div>
+          : 
+          ''
         }
-        
+
+        <div className="single-link" onClick={ ()=> clikcFunc()} >
+          {props.img.length > 4 ?
+            <img className="single-link__img" alt="link" src={props.img} />
+            :
+            <span className="single-link__img--default">{props.name.slice(0, 1)}</span>
+          }
+          
+        </div>
+        <span className="single-link-name">{props.name}</span>
       </div>
-      <span className="single-link-name">{props.name}</span>
-    </div>
+    </Draggable>
   );
 }
