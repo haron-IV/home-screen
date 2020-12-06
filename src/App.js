@@ -3,8 +3,10 @@ import { useDispatch } from 'react-redux'
 import { LinksView } from './components/linksView'
 import AppHeader from './components/appHeader'
 import SectionBookmark from './components/sectionBookmark'
+import AppFooter from './components/appFooter'
 import { setLinks } from './store/links'
 import { setBookmark } from './store/bookmarks'
+import { setLinksOpened } from './store/stats'
 import './App.css';
 import { STORAGE_NAME, STORAGE_MODEL, getLinks, getBookmark } from './utils'
 
@@ -30,12 +32,14 @@ function App() {
 
   showLinksFromStorage()
   showBookmarkFromStorage()
+  dispatch(setLinksOpened())
 
   return (
     <div className="App">
       <AppHeader />
       <LinksView />
       <SectionBookmark />
+      <AppFooter />
     </div>
   );
 }

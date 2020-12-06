@@ -4,6 +4,7 @@ import appStoreReducer from "./appStore"
 import addLinkModal from './addLinkModal'
 import menuReducer from './menu'
 import bookmarkReducer from './bookmarks'
+import statsReducer from './stats'
 
 export default configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
     app: appStoreReducer,
     addLinkModal: addLinkModal,
     menu: menuReducer,
-    bookmark: bookmarkReducer
+    bookmark: bookmarkReducer,
+    stats: statsReducer
   },
 });

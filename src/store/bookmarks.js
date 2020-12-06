@@ -26,5 +26,6 @@ export const bookmarkSlice = createSlice({
 export const { addBookmark, setBookmark, removeBookmarkLink} = bookmarkSlice.actions;
 
 export const selectBookmark = state => state.bookmark.bookmark;
+export const selectBookmarkCount = state => state.bookmark.bookmark.length
 
 export default bookmarkSlice.reducer;

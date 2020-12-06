@@ -1,0 +1,31 @@
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.app-footer-links {
+  list-style-type: none;
+  display: flex;
+}
+.footer-link-wrapper {
+  margin: 0 10px;
+}
+.footer-link-wrapper > a {
+  color: var(--modal-font-color);
+}
+
+.stats-wrapper {
+  list-style-type: none;
+  display: flex;
+}
+.single-stat {
+  padding: 0 10px;
+  border-right: 1px solid var(--link-border);
+}
+.single-stat:last-child {
+  border: none;
+}

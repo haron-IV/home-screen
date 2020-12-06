@@ -31,5 +31,6 @@ export const linksSlice = createSlice({
 export const { addLink, setLinks, removeById, editLink } = linksSlice.actions;
 
 export const selectLinks = state => state.links.value;
+export const getLinksCount = state => state.links.value.length
 
 export default linksSlice.reducer;

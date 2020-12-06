@@ -1,7 +1,10 @@
 const STORAGE_NAME = 'homeScreenApp'
 const STORAGE_MODEL = {
   links: [],
-  bookmark: []
+  bookmark: [],
+  stats: {
+    linksOpened: 0
+  }
 }
 const getStorage = () => localStorage.getItem(STORAGE_NAME)
 const setStograge = (storage) => localStorage.setItem(STORAGE_NAME, JSON.stringify(storage))
@@ -27,6 +30,12 @@ const addBookmarkLink = (bookmarkLink) => {
   storage.bookmark.push(bookmarkLink)
   setStograge(storage)
 }
+const increaseOpenedLinks = () => {
+  const storage = JSON.parse(getStorage())
+  storage.stats.linksOpened = storage.stats.linksOpened+1
+  setStograge(storage)
+}
+const getStats = () => JSON.parse(getStorage()).stats
 
 const uuid =() => {
   var dt = new Date().getTime();
@@ -38,4 +47,4 @@ const uuid =() => {
   return uuid;
 }
 
-export { STORAGE_NAME, STORAGE_MODEL, getStorage, getLinks, addNewLink, uuid, setStorageLinks, getBookmark, addBookmarkLink, setBookmarkLinks }
+export { STORAGE_NAME, STORAGE_MODEL, getStorage, getLinks, addNewLink, uuid, setStorageLinks, getBookmark, addBookmarkLink, setBookmarkLinks, increaseOpenedLinks, getStats }

@@ -4,11 +4,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { removeById } from '../store/links'
 import { toggleEditingModal } from '../store/addLinkModal'
 import { selectEdit } from '../store/menu'
+import { incrementOpenedLinks } from '../store/stats'
 
 export default function SingleLink(props) {
   const dispatch = useDispatch()
   const openLink = (href) => {
     window.open(href)
+    dispatch(incrementOpenedLinks())
   }
   const clikcFunc = () => {
     if (props.feature) props.feature()
