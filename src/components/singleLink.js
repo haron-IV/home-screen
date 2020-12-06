@@ -38,7 +38,8 @@ export default function SingleLink(props) {
     e.stopPropagation()
     dispatch(toggleEditingModal(id))
   }
-
+  // TODO: add fav link for list it better to see
+  //add drag and drop
   return (
     <div className={'single-link-wrapper editing ' + getEditingClass()} >
       
