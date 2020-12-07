@@ -1,3 +1,4 @@
+import sortBy from 'lodash.sortby'
 import { createSlice } from '@reduxjs/toolkit';
 import { addNewLink, setStorageLinks } from '../utils'
 
@@ -24,11 +25,17 @@ export const linksSlice = createSlice({
       const idnexOfEditingLink = state.value.findIndex(link => link.id === id)
       state.value[idnexOfEditingLink] = action.payload
       setStorageLinks(state.value)
+    },
+    updateLinkPosition: (state, action) => {
+      state.value[action.payload.movedElementIndex].index = Number(action.payload.droppedAtIndex) - 1
+      state.value = sortBy(state.value, 'index')
+      state.value.map((link, i) => link.index = i)
+      setStorageLinks(state.value)
     }
   }
 });
 
-export const { addLink, setLinks, removeById, editLink } = linksSlice.actions;
+export const { addLink, setLinks, removeById, editLink, updateLinkPosition } = linksSlice.actions;
 
 export const selectLinks = state => state.links.value;
 export const getLinksCount = state => state.links.value.length
