@@ -25,7 +25,13 @@
 .single-link:hover > .single-link__img {
   opacity: 1;
 }
-
+.single-link-fovurite {
+  border: 2px solid rgb(83, 101, 220)
+}
+.fovourite-sign {
+  position: absolute;
+  top: -14px;
+}
 .single-link > .single-link__img {
   width: 100%;
   height: auto;
@@ -75,6 +81,10 @@
 .link-btn--edit {
   left: 0;
   top: -7px;
+}
+.link-btn--favourite {
+  bottom: 0;
+  left: 0;
 }
 
 .editing {

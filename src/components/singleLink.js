@@ -3,7 +3,7 @@ import './styles/singleLink.css'
 import ReactTooltip from 'react-tooltip';
 import { useSelector, useDispatch } from 'react-redux'
 import Draggable from 'react-draggable'
-import { removeById, selectLinks, updateLinkPosition } from '../store/links'
+import { removeById, selectLinks, updateLinkPosition, toggleFavourites } from '../store/links'
 import { toggleEditingModal } from '../store/addLinkModal'
 import { selectEdit, selectChangePosition } from '../store/menu'
 import { incrementOpenedLinks } from '../store/stats'
@@ -35,6 +35,10 @@ export default function SingleLink(props) {
       }
     }
   }
+  const isFavourite = () => {
+    if (props.isFavourite) return 'single-link-fovurite'
+    else return ''
+  }
 
   const removeLink = (id, e) => {
     e.stopPropagation()
@@ -44,6 +48,11 @@ export default function SingleLink(props) {
   const openEditWindow = (e, id) => {
     e.stopPropagation()
     dispatch(toggleEditingModal(id))
+  }
+
+  const toggleFavourite = (e, id) => {
+    e.stopPropagation()
+    dispatch(toggleFavourites(id))
   }
   
   const [draggedElement, setDraggedElement] = useState(null)
@@ -58,7 +67,7 @@ export default function SingleLink(props) {
       onStart={(e) => drag(e, linkWrapper, setDraggedElement, props.index)}
       onStop={(e) => updatePostionDraggedElement(e)}
     >
-      <div className={'single-link-wrapper editing ' + getEditingClass()} ref={linkWrapper} data-index={props.index}>
+      <div className={'single-link-wrapper editing ' + getEditingClass() } ref={linkWrapper} data-index={props.index}>
         {isEditing && !props.feature ?
           <div>
             <button className="link-btn link-btn--delete" onClick={e => removeLink(props.id, e)} data-tip="remove">
@@ -70,18 +79,25 @@ export default function SingleLink(props) {
               <ReactTooltip />
               <span>⚙️</span>
             </button>
+
+            <button className="link-btn link-btn--favourite" onClick={e => toggleFavourite(e, props.id)}>
+              <span>⭐️</span>
+            </button>
           </div>
           : 
-          ''
+          null
         }
 
-        <div className="single-link" onClick={ ()=> clikcFunc()} >
+        <div className={'single-link ' + isFavourite() } onClick={ ()=> clikcFunc()} >
+          <span className="fovourite-sign">
+            {props.isFavourite ? '⭐️' : null}
+          </span>
+          
           {props.img.length > 4 ?
             <img className="single-link__img" alt="link" src={props.img} />
             :
             <span className="single-link__img--default">{props.name.slice(0, 1)}</span>
           }
-          
         </div>
         <span className="single-link-name">{props.name}</span>
       </div>

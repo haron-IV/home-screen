@@ -26,6 +26,23 @@ export const linksSlice = createSlice({
       state.value[idnexOfEditingLink] = action.payload
       setStorageLinks(state.value)
     },
+    toggleFavourites: (state, action) => {
+      const id  = action.payload
+      //TODO: add toggle star
+      // state.value = state.value.map(link => {
+      //   if (link.id === id && link.favourite === true) {
+      //     link.favourite = false
+      //     return link
+      //   }
+
+      //   if (link.id === id && link.favourite === false) {
+      //     link.favourite = true
+      //     return link
+      //   }
+        
+      // })
+      // setStorageLinks(state.value)
+    },
     updateLinkPosition: (state, action) => {
       state.value[action.payload.movedElementIndex].index = Number(action.payload.droppedAtIndex) - 1
       state.value = sortBy(state.value, 'index')
@@ -35,7 +52,7 @@ export const linksSlice = createSlice({
   }
 });
 
-export const { addLink, setLinks, removeById, editLink, updateLinkPosition } = linksSlice.actions;
+export const { addLink, setLinks, removeById, editLink, updateLinkPosition, toggleFavourites } = linksSlice.actions;
 
 export const selectLinks = state => state.links.value;
 export const getLinksCount = state => state.links.value.length
