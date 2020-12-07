@@ -40,3 +40,8 @@
 .menu__item:active {
   background-color: #000;
 }
+
+.menu__item .icon {
+  position: absolute;
+  top: 0;
+}

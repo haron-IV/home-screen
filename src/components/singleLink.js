@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Draggable from 'react-draggable'
 import { removeById } from '../store/links'
 import { toggleEditingModal } from '../store/addLinkModal'
-import { selectEdit } from '../store/menu'
+import { selectEdit, selectChangePosition } from '../store/menu'
 import { incrementOpenedLinks } from '../store/stats'
 
 export default function SingleLink(props) {
@@ -21,6 +21,7 @@ export default function SingleLink(props) {
   }
   
   const isEditing = useSelector(selectEdit)
+  const isPositionChanging = useSelector(selectChangePosition)
   const getEditingClass = () => {
     const isOdd = number => number % 2
     if (isEditing && !props.feature) {
@@ -41,14 +42,14 @@ export default function SingleLink(props) {
     e.stopPropagation()
     dispatch(toggleEditingModal(id))
   }
-  const isDraggable = () => isEditing ? false : true
+  const isDraggable = () => isPositionChanging ? false : true
   const removeAnimation = () => {
     linkWrapper.current.classList = ['single-link-wrapper', 'react-draggable']
   }
   //TODO: add position like index in elements
   // on drop update positon
   return (
-    <Draggable grid={[85, 105]} disabled={isDraggable()} onDrag={() => removeAnimation()} >
+    <Draggable grid={[85, 105]} disabled={isDraggable()} onDrag={() => removeAnimation()} onStop={() => removeAnimation()} >
       <div className={'single-link-wrapper editing ' + getEditingClass()} ref={linkWrapper}>
         {isEditing && !props.feature ?
           <div>
