@@ -1,5 +1,3 @@
-import { useDispatch } from'react-redux'
-
 export const drag = (e, linkWrapper, setDragElement, index) => {
   e.stopPropagation()
   linkWrapper.current.style.zIndex = -1
