@@ -7,6 +7,7 @@ import { removeById, selectLinks, updateLinkPosition } from '../store/links'
 import { toggleEditingModal } from '../store/addLinkModal'
 import { selectEdit, selectChangePosition } from '../store/menu'
 import { incrementOpenedLinks } from '../store/stats'
+import { drag, updatePosition, isDraggableDisabled } from './utils/dragAndDropUtil'
 
 export default function SingleLink(props) {
   const dispatch = useDispatch()
@@ -44,45 +45,19 @@ export default function SingleLink(props) {
     e.stopPropagation()
     dispatch(toggleEditingModal(id))
   }
-  const isDraggableDisabled = () => {
-    if (isPositionChanging && !Boolean(props.feature)) return false
-    return true
-  }
-  let [draggedElement, setDraggedElement] = useState(null)
-  const links = useSelector(selectLinks)
-  const drag = (e) => {
-    e.stopPropagation()
-    linkWrapper.current.style.zIndex = -1
-    setDraggedElement(props.index)
-  }
+  
+  const [draggedElement, setDraggedElement] = useState(null)
 
-  const [positionOfDraggable, setPositionOfDraggable] = useState({})
-  const updatePosition = (e) => {
-    let droppedAt = e.target
-    let recurencyIndex = 0
-
-    const setDroppedAtElement = () => {
-      if (!droppedAt?.getAttribute('data-index') && recurencyIndex < 5) {
-        droppedAt = droppedAt?.parentElement
-        recurencyIndex++
-        setDroppedAtElement()
-      } else {
-        recurencyIndex = 0
-        return
-      }
-    }
-    setDroppedAtElement()
-    
-    const movedElementIndex = props.index
-    const droppedAtIndex = droppedAt?.getAttribute('data-index') ? droppedAt.getAttribute('data-index') : movedElementIndex
-    
-    dispatch(updateLinkPosition({droppedAtIndex, movedElementIndex}))
-    linkWrapper.current.style.transform = 'translate(0px, 0px)'
-    linkWrapper.current.style.zIndex = 0
+  const updatePostionDraggedElement = (e) => {
+    dispatch(updateLinkPosition(updatePosition(e, props.index, linkWrapper)))
   }
     
   return (
-    <Draggable disabled={isDraggableDisabled()} onStart={(e) => drag(e)} onStop={(e) => updatePosition(e)} >
+    <Draggable 
+      disabled={isDraggableDisabled(isPositionChanging, props)}
+      onStart={(e) => drag(e, linkWrapper, setDraggedElement, props.index)}
+      onStop={(e) => updatePostionDraggedElement(e)}
+    >
       <div className={'single-link-wrapper editing ' + getEditingClass()} ref={linkWrapper} data-index={props.index}>
         {isEditing && !props.feature ?
           <div>
