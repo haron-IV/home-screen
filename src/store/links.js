@@ -18,6 +18,10 @@ export const linksSlice = createSlice({
     removeById: (state, action) => {
       const id = action.payload
       state.value = state.value.filter(link => link.id !== id)
+      state.value = state.value.map( (link, i) => {
+        link.index = i
+        return link
+      })
       setStorageLinks(state.value)
     },
     editLink: (state, action) => {
