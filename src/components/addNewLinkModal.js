@@ -73,7 +73,8 @@ export default function AddNewLinkModal() {
         name,
         href: prepareLink(),
         img: icon,
-        id: uuid()
+        id: uuid(),
+        index: links.length
       }))
     }
     toggleModalVisibility(e)

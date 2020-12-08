@@ -5,7 +5,7 @@ export const drag = (e, linkWrapper, setDragElement, index) => {
 }
 
 export const updatePosition = (e, index, linkWrapper) => {
-  // TODO: fix when index is null
+  debugger;
   let droppedAt = e.target
   let recurencyIndex = 0
 
