@@ -54,18 +54,17 @@ export default function SingleLink(props) {
     e.stopPropagation()
     dispatch(toggleFavourites(id))
   }
-  
-  const [draggedElement, setDraggedElement] = useState(null)
 
   const updatePostionDraggedElement = (e) => {
     dispatch(updateLinkPosition(updatePosition(e, props.index, linkWrapper)))
-  }
-    
+  } 
+
   return (
     <Draggable 
       disabled={isDraggableDisabled(isPositionChanging, props)}
-      onStart={(e) => drag(e, linkWrapper, setDraggedElement, props.index)}
+      onStart={(e) => drag(e, linkWrapper)}
       onStop={(e) => updatePostionDraggedElement(e)}
+      position={{x: 0, y: 0}}
     >
       <div className={'single-link-wrapper editing ' + getEditingClass() } ref={linkWrapper} data-index={props.index}>
         {isEditing && !props.feature ?

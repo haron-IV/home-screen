@@ -1,11 +1,9 @@
-export const drag = (e, linkWrapper, setDragElement, index) => {
+export const drag = (e, linkWrapper) => {
   e.stopPropagation()
   linkWrapper.current.style.zIndex = -1
-  setDragElement(index)
 }
 
 export const updatePosition = (e, index, linkWrapper) => {
-  debugger;
   let droppedAt = e.target
   let recurencyIndex = 0
 
@@ -29,10 +27,10 @@ export const updatePosition = (e, index, linkWrapper) => {
     return movedElementIndex
   }
 
-  linkWrapper.current.style.transform = 'translate(0px, 0px)'
+  // linkWrapper.current.style.transform = 'translate(0px, 0px)'
   linkWrapper.current.style.zIndex = 0
 
-  return {movedElementIndex, droppedAtIndex}
+  return {movedElementIndex, droppedAtIndex: droppedAtIndex()}
 }
 
 export const isDraggableDisabled = (isPositionChanging, props) => {

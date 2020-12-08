@@ -45,7 +45,15 @@ export const linksSlice = createSlice({
       setStorageLinks(state.value)
     },
     updateLinkPosition: (state, action) => {
-      state.value[action.payload.movedElementIndex].index = Number(action.payload.droppedAtIndex) - 1
+      const movedLinkIndex = state.value[action.payload.movedElementIndex].index
+      const droppedAtLinkIndex = Number(action.payload.droppedAtIndex)
+      
+      if (movedLinkIndex > droppedAtLinkIndex) {
+        state.value[action.payload.movedElementIndex].index = droppedAtLinkIndex - 1
+      } else {
+        state.value[action.payload.movedElementIndex].index = droppedAtLinkIndex + 1
+      }
+
       state.value = sortBy(state.value, 'index')
       state.value.map((link, i) => link.index = i)
       setStorageLinks(state.value)
