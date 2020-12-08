@@ -7,20 +7,23 @@ export default function AppHeader() {
   const isEditing = useSelector(selectEdit)
   const isPositionChanging = useSelector(selectChangePosition)
 
+  const isMenuItemActive = (isActive) => isActive ? 'menu-item-active' : null
+
   return (
+    //TODO: add ask google
     <header className="app-header">
       <nav className="app-header__navigation">
         <ul className="menu">
-          <li className="menu__item" onClick={() => dispatch(toggleEdit())}>
-            <span>
+          <li className={'menu__item ' + isMenuItemActive(isEditing)} onClick={() => dispatch(toggleEdit())}>
+            <span className="item-text">
               Edit
               <span className="icon">
                 {isEditing ? ' ❌' : ''}
               </span>
             </span>
           </li>
-          <li className="menu__item" onClick={() => dispatch(toggleChangingPosition())}>
-            <span>
+          <li className={'menu__item ' + isMenuItemActive(isPositionChanging)} onClick={() => dispatch(toggleChangingPosition())}>
+            <span className="item-text">
               Change position
               <span className="icon">
                 {isPositionChanging ? ' ❌' : ''}
