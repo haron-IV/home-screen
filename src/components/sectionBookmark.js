@@ -18,6 +18,8 @@ export default  function SectionBookmark() {
         id: uuid()
       }
       dispatch(addBookmark(bookmarkLink))
+      setLink('')
+      setLinkAlias('')
     } else {
       // TODO: add modal :)
       alert('Cannot add empty link')
