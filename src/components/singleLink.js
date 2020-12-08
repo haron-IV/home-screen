@@ -3,7 +3,7 @@ import './styles/singleLink.css'
 import ReactTooltip from 'react-tooltip';
 import { useSelector, useDispatch } from 'react-redux'
 import Draggable from 'react-draggable'
-import { removeById, selectLinks, updateLinkPosition, toggleFavourites } from '../store/links'
+import { removeById, updateLinkPosition, toggleFavourites } from '../store/links'
 import { toggleEditingModal } from '../store/addLinkModal'
 import { selectEdit, selectChangePosition } from '../store/menu'
 import { incrementOpenedLinks } from '../store/stats'
