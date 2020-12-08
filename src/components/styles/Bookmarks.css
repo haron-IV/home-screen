@@ -9,6 +9,8 @@
   overflow-y: scroll;
   width: 100%;
   padding: 0;
+  display: flex;
+  flex-direction: column-reverse;
 }
 .bookmark-list::-webkit-scrollbar {
   background-color: var(--link-bg);
@@ -20,7 +22,7 @@
   border-radius: 3px;
 }
 .bookmark-link {
-  margin: 10px 0;
+  margin: 5px 0;
   background-color: var(--link-bg);
   display: flex;
   align-items: center;
