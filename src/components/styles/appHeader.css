@@ -23,15 +23,18 @@
 }
 
 .menu__item {
+  position: relative;
   height: 100%;
-  width: 65px;
+  width: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: background ease-in-out 250ms, color ease-in-out 450ms;
 }
-
+.item-text {
+  text-align: center;
+}
 .menu__item:hover {
   background-color: var(--link-bg);
   color: var(--modal-font-color);
@@ -39,4 +42,16 @@
 
 .menu__item:active {
   background-color: #000;
+}
+
+.menu__item .icon {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 13px;
+}
+
+.menu-item-active {
+  background-color: var(--link-bg);
+  color: var(--modal-font-color);
 }

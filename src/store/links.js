@@ -1,3 +1,4 @@
+import sortBy from 'lodash.sortby'
 import { createSlice } from '@reduxjs/toolkit';
 import { addNewLink, setStorageLinks } from '../utils'
 
@@ -17,6 +18,10 @@ export const linksSlice = createSlice({
     removeById: (state, action) => {
       const id = action.payload
       state.value = state.value.filter(link => link.id !== id)
+      state.value = state.value.map( (link, i) => {
+        link.index = i
+        return link
+      })
       setStorageLinks(state.value)
     },
     editLink: (state, action) => {
@@ -24,11 +29,39 @@ export const linksSlice = createSlice({
       const idnexOfEditingLink = state.value.findIndex(link => link.id === id)
       state.value[idnexOfEditingLink] = action.payload
       setStorageLinks(state.value)
+    },
+    toggleFavourites: (state, action) => {
+      const id  = action.payload
+      
+      state.value = state.value.map(link => {
+        if(link.id === id && Boolean(link.favourite) === false) {
+          link.favourite = true
+        } else if (link.id === id && Boolean(link.favourite) === true) {
+          link.favourite = false
+        }
+        return link
+      })
+  
+      setStorageLinks(state.value)
+    },
+    updateLinkPosition: (state, action) => {
+      const movedLinkIndex = state.value[action.payload.movedElementIndex].index
+      const droppedAtLinkIndex = Number(action.payload.droppedAtIndex)
+      
+      if (movedLinkIndex > droppedAtLinkIndex) {
+        state.value[action.payload.movedElementIndex].index = droppedAtLinkIndex - 1
+      } else {
+        state.value[action.payload.movedElementIndex].index = droppedAtLinkIndex + 1
+      }
+
+      state.value = sortBy(state.value, 'index')
+      state.value.map((link, i) => link.index = i)
+      setStorageLinks(state.value)
     }
   }
 });
 
-export const { addLink, setLinks, removeById, editLink } = linksSlice.actions;
+export const { addLink, setLinks, removeById, editLink, updateLinkPosition, toggleFavourites } = linksSlice.actions;
 
 export const selectLinks = state => state.links.value;
 export const getLinksCount = state => state.links.value.length

@@ -1,7 +1,7 @@
 .single-link-wrapper {
   width: fit-content;
   text-align: center;
-  margin: 20px 10px;
+  margin: 30px 10px;
   position: relative;
   max-width: 68px;
 }
@@ -25,7 +25,13 @@
 .single-link:hover > .single-link__img {
   opacity: 1;
 }
-
+.single-link-fovurite {
+  border: 2px solid rgb(83, 101, 220)
+}
+.fovourite-sign {
+  position: absolute;
+  top: -14px;
+}
 .single-link > .single-link__img {
   width: 100%;
   height: auto;
@@ -76,6 +82,10 @@
   left: 0;
   top: -7px;
 }
+.link-btn--favourite {
+  bottom: 0;
+  left: 0;
+}
 
 .editing {
   animation-iteration-count: infinite;
@@ -101,4 +111,14 @@
   0% { transform: translateY(-2px) }
   50% { transform: translateY(2px) }
   100% { transform: translateY(-2px); }
+}
+
+.position-changing-icon {
+  position: absolute;
+  top: -15px;
+}
+
+.position-changing-icon--dragged {
+  display: block;
+  transform: rotate(-90deg);
 }

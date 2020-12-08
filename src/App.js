@@ -33,6 +33,8 @@ function App() {
   showLinksFromStorage()
   showBookmarkFromStorage()
   dispatch(setLinksOpened())
+  
+  console.clear() //TODO: remove it
 
   return (
     <div className="App">

@@ -1,19 +1,33 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleEdit, selectEdit } from '../store/menu'
+import { toggleEdit, selectEdit, toggleChangingPosition, selectChangePosition } from '../store/menu'
 import './styles/appHeader.css'
 
-export default function AppHeader(props) {
+export default function AppHeader() {
   const dispatch = useDispatch()
-  const isEditing = useSelector(selectEdit)  
+  const isEditing = useSelector(selectEdit)
+  const isPositionChanging = useSelector(selectChangePosition)
+
+  const isMenuItemActive = (isActive) => isActive ? 'menu-item-active' : null
 
   return (
+    //TODO: add ask google
     <header className="app-header">
       <nav className="app-header__navigation">
         <ul className="menu">
-          <li className="menu__item" onClick={() => dispatch(toggleEdit())}>
-            <span>
+          <li className={'menu__item ' + isMenuItemActive(isEditing)} onClick={() => dispatch(toggleEdit())}>
+            <span className="item-text">
               Edit
-              {isEditing ? ' ❌' : ''}
+              <span className="icon">
+                {isEditing ? ' ❌' : ''}
+              </span>
+            </span>
+          </li>
+          <li className={'menu__item ' + isMenuItemActive(isPositionChanging)} onClick={() => dispatch(toggleChangingPosition())}>
+            <span className="item-text">
+              Change position
+              <span className="icon">
+                {isPositionChanging ? ' ❌' : ''}
+              </span>
             </span>
           </li>
         </ul>
