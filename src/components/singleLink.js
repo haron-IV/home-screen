@@ -25,6 +25,7 @@ export default function SingleLink(props) {
   
   const isEditing = useSelector(selectEdit)
   const isPositionChanging = useSelector(selectChangePosition)
+  const [isElementDragged, setIsElementDragged] = useState(false)
   const getEditingClass = () => {
     const isOdd = number => number % 2
     if (isEditing && !props.feature) {
@@ -56,6 +57,7 @@ export default function SingleLink(props) {
   }
 
   const updatePostionDraggedElement = (e) => {
+    setIsElementDragged(false)
     dispatch(updateLinkPosition(updatePosition(e, props.index, linkWrapper)))
   } 
 
@@ -63,6 +65,7 @@ export default function SingleLink(props) {
     <Draggable 
       disabled={isDraggableDisabled(isPositionChanging, props)}
       onStart={(e) => drag(e, linkWrapper)}
+      onDrag={() => setIsElementDragged(true)}
       onStop={(e) => updatePostionDraggedElement(e)}
       position={{x: 0, y: 0}}
     >
@@ -88,8 +91,18 @@ export default function SingleLink(props) {
         }
 
         <div className={'single-link ' + isFavourite() } onClick={ ()=> clikcFunc()} >
+          {isPositionChanging && !isElementDragged  ?
+            <span className="position-changing-icon">🤚</span>
+          : 
+            null
+          }
+
+          { isPositionChanging && isElementDragged ? 
+            <span className="position-changing-icon position-changing-icon--dragged">🤏</span> : null
+          }
+
           <span className="fovourite-sign">
-            {props.isFavourite ? '⭐️' : null}
+            {props.isFavourite && !isPositionChanging ? '⭐️' : null}
           </span>
           
           {props.img.length > 4 ?

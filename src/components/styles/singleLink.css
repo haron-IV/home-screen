@@ -112,3 +112,13 @@
   50% { transform: translateY(2px) }
   100% { transform: translateY(-2px); }
 }
+
+.position-changing-icon {
+  position: absolute;
+  top: -15px;
+}
+
+.position-changing-icon--dragged {
+  display: block;
+  transform: rotate(-90deg);
+}
