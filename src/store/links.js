@@ -28,20 +28,17 @@ export const linksSlice = createSlice({
     },
     toggleFavourites: (state, action) => {
       const id  = action.payload
-      //TODO: add toggle star
-      // state.value = state.value.map(link => {
-      //   if (link.id === id && link.favourite === true) {
-      //     link.favourite = false
-      //     return link
-      //   }
-
-      //   if (link.id === id && link.favourite === false) {
-      //     link.favourite = true
-      //     return link
-      //   }
-        
-      // })
-      // setStorageLinks(state.value)
+      
+      state.value = state.value.map(link => {
+        if(link.id === id && Boolean(link.favourite) === false) {
+          link.favourite = true
+        } else if (link.id === id && Boolean(link.favourite) === true) {
+          link.favourite = false
+        }
+        return link
+      })
+  
+      setStorageLinks(state.value)
     },
     updateLinkPosition: (state, action) => {
       state.value[action.payload.movedElementIndex].index = Number(action.payload.droppedAtIndex) - 1
