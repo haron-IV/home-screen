@@ -22,7 +22,12 @@ export const updatePosition = (e, index, linkWrapper) => {
   setDroppedAtElement()
 
   const movedElementIndex = index
-  const droppedAtIndex = droppedAt?.getAttribute('data-index') ? droppedAt.getAttribute('data-index') : movedElementIndex
+  const droppedAtIndex = () => { 
+    if (droppedAt) {
+      return droppedAt?.getAttribute('data-index') ? droppedAt.getAttribute('data-index') : movedElementIndex 
+    }
+    return movedElementIndex
+  }
 
   linkWrapper.current.style.transform = 'translate(0px, 0px)'
   linkWrapper.current.style.zIndex = 0
