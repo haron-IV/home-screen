@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { selectBookmark, removeBookmarkLink } from '../store/bookmarks'
 import { selectEdit } from '../store/menu'
 import { incrementOpenedLinks } from '../store/stats'
 import { selectDeviceWidth } from '../store/appStore'
-import ReactTooltip from 'react-tooltip';
 import './styles/Bookmarks.css'
 
 export default  function Bookmarks() {

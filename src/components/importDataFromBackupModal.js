@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { setStograge } from '../utils'
-import { selectDataImporting, toggleDataImporting } from '../store/menu'
+import { toggleDataImporting } from '../store/menu'
 import './styles/addNewLinkModal.css'
 
 export default function ImportDataFromBackupModal() {

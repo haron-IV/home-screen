@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import './styles/sectionBookmark.css'
 import { addBookmark } from '../store/bookmarks'
 import Bookmarks from './bookmarks'

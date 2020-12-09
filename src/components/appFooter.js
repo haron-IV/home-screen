@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getLinksCount } from '../store/links'
 import { selectBookmarkCount } from '../store/bookmarks'
 import { selectOpenedLinks } from '../store/stats'

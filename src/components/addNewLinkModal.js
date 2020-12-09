@@ -23,7 +23,7 @@ export default function AddNewLinkModal() {
       setLink(toEdit.href)
       setIcon(toEdit.img)
     }
-  }, [])
+  }, [editedElementId, links, modalType])
   
   const nameLabelRef = useRef()
   const linkLabelRef = useRef()
