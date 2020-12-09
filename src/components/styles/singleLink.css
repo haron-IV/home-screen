@@ -52,10 +52,11 @@
   height: 2.2em;
   overflow: hidden;
   width: 100%;
-  transition: height ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
   position: absolute;
 }
 .single-link-wrapper:hover .single-link-name {
+  /* TODO: fix problem with too long singleword name */
   height: 4em;
   position: absolute;
 }
