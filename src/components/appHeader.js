@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleEdit, selectEdit, toggleChangingPosition, selectChangePosition } from '../store/menu'
+import { getStorage } from '../utils'
 import AskGoogle from './askGoogle'
 import './styles/appHeader.css'
 
@@ -9,6 +10,14 @@ export default function AppHeader() {
   const isPositionChanging = useSelector(selectChangePosition)
 
   const isMenuItemActive = (isActive) => isActive ? 'menu-item-active' : null
+
+  const createBackup = () => {
+    const a = document.createElement('a')
+    const file = new Blob([getStorage()], { type: 'application/json' })
+    a.href = URL.createObjectURL(file)
+    a.download = "home-app-backup"
+    a.click()
+  }
 
   return (
     <header className="app-header">
@@ -29,6 +38,11 @@ export default function AppHeader() {
               <span className="icon">
                 {isPositionChanging ? ' ❌' : ''}
               </span>
+            </span>
+          </li>
+          <li className="menu__item"  onClick={() => createBackup()}>
+            <span className="item-text">
+              Create backup
             </span>
           </li>
         </ul>
