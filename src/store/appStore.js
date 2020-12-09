@@ -1,21 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isAddNewModalVisible: false
+  deviceWidth: 0
 }
 
 export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    toggleModal: state => {
-      state.isAddNewModalVisible = !state.isAddNewModalVisible
+    setDeviceWidth: (state, action) => {
+      state.deviceWidth = action.payload
     }
   }
 });
 
-export const { toggleModal } = appSlice.actions;
+export const { setDeviceWidth } = appSlice.actions;
 
-export const selectIsAddNewModalVisible = state => state.app.isAddNewModalVisible;
+export const selectDeviceWidth = state => state.app.deviceWidth;
 
 export default appSlice.reducer;

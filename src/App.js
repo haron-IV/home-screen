@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 import { useDispatch } from 'react-redux'
 import { LinksView } from './components/linksView'
 import AppHeader from './components/appHeader'
@@ -7,6 +8,7 @@ import AppFooter from './components/appFooter'
 import { setLinks } from './store/links'
 import { setBookmark } from './store/bookmarks'
 import { setLinksOpened } from './store/stats'
+import { setDeviceWidth } from './store/appStore'
 import './App.css';
 import { STORAGE_NAME, STORAGE_MODEL, getLinks, getBookmark } from './utils'
 
@@ -29,12 +31,15 @@ function App() {
       getBookmark()
     ))
   }
+  const setWindowSize = () => {
+    dispatch(setDeviceWidth(window.innerWidth))
+  }
 
   showLinksFromStorage()
   showBookmarkFromStorage()
   dispatch(setLinksOpened())
-  
-  console.clear() //TODO: remove it
+  setWindowSize()
+  window.addEventListener('resize', setWindowSize)
 
   return (
     <div className="App">
@@ -42,6 +47,7 @@ function App() {
       <LinksView />
       <SectionBookmark />
       <AppFooter />
+      <ReactTooltip />
     </div>
   );
 }

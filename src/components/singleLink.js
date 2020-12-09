@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 import './styles/singleLink.css'
-import ReactTooltip from 'react-tooltip';
 import { useSelector, useDispatch } from 'react-redux'
 import Draggable from 'react-draggable'
 import { removeById, updateLinkPosition, toggleFavourites } from '../store/links'
@@ -73,12 +72,10 @@ export default function SingleLink(props) {
         {isEditing && !props.feature ?
           <div>
             <button className="link-btn link-btn--delete" onClick={e => removeLink(props.id, e)} data-tip="remove">
-              <ReactTooltip />
               <span>🗑</span>
             </button>
 
             <button className="link-btn link-btn--edit" onClick={e => openEditWindow(e, props.id)} data-tip="edit">
-              <ReactTooltip />
               <span>⚙️</span>
             </button>
 
