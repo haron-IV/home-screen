@@ -4,14 +4,17 @@ import './styles/linksView.css'
 import SingleLink from './singleLink'
 import AddNewLinkModal from './addNewLinkModal'
 import { selectLinks } from '../store/links'
+import { selectEdit, selectChangePosition } from '../store/menu'
 import { toggleModal, selectIsModalVisible } from '../store/addLinkModal'
 
 
 export function LinksView() {
   const links = useSelector(selectLinks)
   const isModalVisible = useSelector(selectIsModalVisible)
+  const isEditing = useSelector(selectEdit)
+  const isPositionChanging = useSelector(selectChangePosition)
   const dispatch = useDispatch()
-  
+  console.log(!isEditing || !isPositionChanging);
   const toggleModalVisibility = () => {
     dispatch(toggleModal())
   }
@@ -29,12 +32,14 @@ export function LinksView() {
       />)
       }
 
-      <SingleLink 
-        name=""
-        href=""
-        img="https://www.flaticon.com/svg/static/icons/svg/1828/1828925.svg"
-        feature={toggleModalVisibility}
-      />
+      {isEditing || isPositionChanging ? null :
+        <SingleLink 
+         name=""
+         href=""
+         img="https://www.flaticon.com/svg/static/icons/svg/1828/1828925.svg"
+         feature={toggleModalVisibility}
+        />
+      }
 
       {isModalVisible ? <AddNewLinkModal /> : null}
     </main>

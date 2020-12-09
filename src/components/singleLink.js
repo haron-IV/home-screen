@@ -91,7 +91,7 @@ export default function SingleLink(props) {
         }
 
         <div className={'single-link ' + isFavourite() } onClick={ ()=> clikcFunc()} >
-          {isPositionChanging && !isElementDragged  ?
+          {isPositionChanging && !isElementDragged && !props.feature ?
             <span className="position-changing-icon">🤚</span>
           : 
             null
