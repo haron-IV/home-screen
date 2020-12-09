@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleEdit, selectEdit, toggleChangingPosition, selectChangePosition } from '../store/menu'
+import AskGoogle from './askGoogle'
 import './styles/appHeader.css'
 
 export default function AppHeader() {
@@ -10,8 +11,8 @@ export default function AppHeader() {
   const isMenuItemActive = (isActive) => isActive ? 'menu-item-active' : null
 
   return (
-    //TODO: add ask google
     <header className="app-header">
+      <AskGoogle />
       <nav className="app-header__navigation">
         <ul className="menu">
           <li className={'menu__item ' + isMenuItemActive(isEditing)} onClick={() => dispatch(toggleEdit())}>
