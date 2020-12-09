@@ -1,3 +1,6 @@
+Production status: [![Netlify Status](https://api.netlify.com/api/v1/badges/68757c26-a013-4d5b-9653-1883dd53eedd/deploy-status)](https://app.netlify.com/sites/home-screen/deploys)
+
+production: [home-screen.netlify.app](home-screen.netlify.app)
 ## aditional libraries
 - react draggable
 - react tooltip
