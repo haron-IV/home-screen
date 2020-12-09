@@ -79,3 +79,24 @@
 .add-link-button:last-child {
   margin-left: 5px;
 }
+
+.file-input-wrapper {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.file-input {
+  opacity: 0;
+  position: absolute;
+  height: 100%;
+}
+
+.file-input-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+}
