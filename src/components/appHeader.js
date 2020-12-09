@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleEdit, selectEdit, toggleChangingPosition, selectChangePosition } from '../store/menu'
+import { toggleEdit, selectEdit, toggleChangingPosition, selectChangePosition, toggleDataImporting } from '../store/menu'
 import { getStorage } from '../utils'
 import AskGoogle from './askGoogle'
 import './styles/appHeader.css'
@@ -43,6 +43,11 @@ export default function AppHeader() {
           <li className="menu__item"  onClick={() => createBackup()}>
             <span className="item-text">
               Create backup
+            </span>
+          </li>
+          <li className="menu__item"  onClick={() => dispatch(toggleDataImporting())}>
+            <span className="item-text">
+              Import data
             </span>
           </li>
         </ul>

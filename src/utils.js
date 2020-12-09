@@ -47,4 +47,4 @@ const uuid =() => {
   return uuid;
 }
 
-export { STORAGE_NAME, STORAGE_MODEL, getStorage, getLinks, addNewLink, uuid, setStorageLinks, getBookmark, addBookmarkLink, setBookmarkLinks, increaseOpenedLinks, getStats }
+export { STORAGE_NAME, STORAGE_MODEL, getStorage, setStograge, getLinks, addNewLink, uuid, setStorageLinks, getBookmark, addBookmarkLink, setBookmarkLinks, increaseOpenedLinks, getStats }
