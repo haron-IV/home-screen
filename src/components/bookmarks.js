@@ -27,7 +27,8 @@ export default  function Bookmarks() {
     e.stopPropagation()
     dispatch(removeBookmarkLink(id))
   }
-  const openLink = link => {
+  const openLink = (link, e) => {
+    e.stopPropagation()
     window.open(link)
     dispatch(incrementOpenedLinks())
   }
@@ -35,7 +36,7 @@ export default  function Bookmarks() {
   return (
     <div className="bookmark-list-wrapper">
       <ul className="bookmark-list">
-        {bokmarkLinks.map( ({ link, linkAlias, id}) => <li key={id} className="bookmark-link" onClick={() => openLink(link)}>
+        {bokmarkLinks.map( ({ link, linkAlias, id}) => <li key={id} className="bookmark-link" onClick={e => openLink(link, e)}>
           <div>
             {linkAlias ? <span className="link-alias">{linkAlias}:</span> : null}
             <a href={link} target="_blank" rel="noreferrer" data-tip={getTooltipLink(link)}>
