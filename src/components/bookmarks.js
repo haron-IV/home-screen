@@ -39,7 +39,7 @@ export default  function Bookmarks() {
         {bokmarkLinks.map( ({ link, linkAlias, id}) => <li key={id} className="bookmark-link" onClick={e => openLink(link, e)}>
           <div>
             {linkAlias ? <span className="link-alias">{linkAlias}:</span> : null}
-            <a href={link} target="_blank" rel="noreferrer" data-tip={getTooltipLink(link)}>
+            <a href={link} target="_blank" rel="noreferrer" data-tip={getTooltipLink(link)} onClick={e => e.preventDefault()}>
               {prepareLinkToShow(link)}
             </a>
           </div>
