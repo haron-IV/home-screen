@@ -7,6 +7,7 @@ const STORAGE_MODEL = {
   },
   config: {
     newTabOpening: false,
+    buildVersion: "0.1.0",
   },
 };
 const getStorage = () => localStorage.getItem(STORAGE_NAME);
