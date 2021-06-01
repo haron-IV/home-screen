@@ -4,7 +4,7 @@
 }
 .ask-google__form {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .ask-google-input {
   width: 65%;
