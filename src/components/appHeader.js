@@ -39,8 +39,10 @@ export default function AppHeader() {
               dispatch(toggleNewTabOpening());
             }}
           >
-            New tab opening
-            <span className="icon">{isNewTabOpeningActive && "✅"}</span>
+            <span className="item-text">
+              New tab opening
+              <span className="icon">{isNewTabOpeningActive && "✅"}</span>
+            </span>
           </li>
           <li className={"menu__item " + isMenuItemActive(isEditing)} onClick={() => dispatch(toggleEdit())}>
             <span className="item-text">
