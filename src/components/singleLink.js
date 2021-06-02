@@ -13,13 +13,16 @@ export default function SingleLink(props) {
   const linkWrapper = useRef();
   const isNewTabOpening = useSelector(selectNewTabOpening);
   const openLink = (href) => {
-    window.open(href, !isNewTabOpening && "_self");
+    window.open(href);
     dispatch(incrementOpenedLinks());
+    // window.open("http://localhost:3001/close.html", "_parent");
   };
   const clikcFunc = () => {
     if (props.feature) props.feature();
     else {
-      if (!isPositionChanging) openLink(props.href);
+      if (!isPositionChanging) {
+        // openLink(props.href);
+      }
     }
   };
 
@@ -86,20 +89,22 @@ export default function SingleLink(props) {
           </div>
         ) : null}
 
-        <div className={"single-link " + isFavourite()} onClick={() => clikcFunc()}>
-          {isPositionChanging && !isElementDragged && !props.feature ? <span className="position-changing-icon">🤚</span> : null}
+        <a href={props.href} {...{ target: isNewTabOpening && !isPositionChanging && "_blank" }} className="not-styled-anchor">
+          <div className={"single-link " + isFavourite()} onClick={() => clikcFunc()}>
+            {isPositionChanging && !isElementDragged && !props.feature ? <span className="position-changing-icon">🤚</span> : null}
 
-          {isPositionChanging && isElementDragged ? <span className="position-changing-icon position-changing-icon--dragged">🤏</span> : null}
+            {isPositionChanging && isElementDragged ? <span className="position-changing-icon position-changing-icon--dragged">🤏</span> : null}
 
-          <span className="fovourite-sign">{props.isFavourite && !isPositionChanging ? "⭐️" : null}</span>
+            <span className="fovourite-sign">{props.isFavourite && !isPositionChanging ? "⭐️" : null}</span>
 
-          {props.img.length > 4 ? (
-            <img className="single-link__img" alt="link" src={props.img} />
-          ) : (
-            <span className="single-link__img--default">{props.name.slice(0, 1)}</span>
-          )}
-        </div>
-        <span className="single-link-name">{props.name}</span>
+            {props.img.length > 4 ? (
+              <img className="single-link__img" alt="link" src={props.img} />
+            ) : (
+              <span className="single-link__img--default">{props.name.slice(0, 1)}</span>
+            )}
+          </div>
+          <span className="single-link-name">{props.name}</span>
+        </a>
       </div>
     </Draggable>
   );

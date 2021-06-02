@@ -12,7 +12,7 @@
   padding: 10px;
   background-color: var(--link-bg);
   border-radius: 50%;
-  border: 2px solid var(--link-border); 
+  border: 2px solid var(--link-border);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +26,7 @@
   opacity: 1;
 }
 .single-link-fovurite {
-  border: 2px solid rgb(83, 101, 220)
+  border: 2px solid rgb(83, 101, 220);
 }
 .fovourite-sign {
   position: absolute;
@@ -35,7 +35,7 @@
 .single-link > .single-link__img {
   width: 100%;
   height: auto;
-  opacity: .75;
+  opacity: 0.75;
   transition: opacity ease-in-out 250ms;
 }
 
@@ -43,7 +43,7 @@
   text-transform: uppercase;
   font-weight: 600;
   font-size: 50px;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, .5);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .single-link-name {
@@ -103,15 +103,27 @@
 }
 
 @keyframes editing-1 {
-  0% { transform: translateY(2px) }
-  50% { transform: translateY(-2px) }
-  100% { transform: translateY(2px); }
+  0% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(2px);
+  }
 }
 
 @keyframes editing-2 {
-  0% { transform: translateY(-2px) }
-  50% { transform: translateY(2px) }
-  100% { transform: translateY(-2px); }
+  0% {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(-2px);
+  }
 }
 
 .position-changing-icon {
@@ -122,4 +134,16 @@
 .position-changing-icon--dragged {
   display: block;
   transform: rotate(-90deg);
+}
+
+.not-styled-anchor:link {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
+
+.not-styled-anchor:visited {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
 }
