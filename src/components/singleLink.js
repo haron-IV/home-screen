@@ -12,18 +12,8 @@ export default function SingleLink(props) {
   const dispatch = useDispatch();
   const linkWrapper = useRef();
   const isNewTabOpening = useSelector(selectNewTabOpening);
-  const openLink = (href) => {
-    window.open(href);
-    dispatch(incrementOpenedLinks());
-    // window.open("http://localhost:3001/close.html", "_parent");
-  };
   const clikcFunc = () => {
     if (props.feature) props.feature();
-    else {
-      if (!isPositionChanging) {
-        // openLink(props.href);
-      }
-    }
   };
 
   const isEditing = useSelector(selectEdit);
@@ -89,7 +79,7 @@ export default function SingleLink(props) {
           </div>
         ) : null}
 
-        <a href={props.href} {...{ target: isNewTabOpening && !isPositionChanging && "_blank" }} className="not-styled-anchor">
+        <a href={props.href} {...{ target: isNewTabOpening && !isPositionChanging && "_blank" }} className="not-styled-anchor" onClick={() => dispatch(incrementOpenedLinks())}>
           <div className={"single-link " + isFavourite()} onClick={() => clikcFunc()}>
             {isPositionChanging && !isElementDragged && !props.feature ? <span className="position-changing-icon">🤚</span> : null}
 
