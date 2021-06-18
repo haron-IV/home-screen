@@ -8,11 +8,11 @@ import AppFooter from "./components/appFooter";
 import ImportDataFromBackupModal from "./components/importDataFromBackupModal";
 import { setLinks } from "./store/links";
 import { setBookmark } from "./store/bookmarks";
-import { setLinksOpened } from "./store/stats";
+import { setLinksOpened, setSearchCount, setTranslatedPhrases } from "./store/stats";
 import { setDeviceWidth } from "./store/appStore";
 import { selectDataImporting } from "./store/menu";
 import "./App.css";
-import { STORAGE_NAME, STORAGE_MODEL, getLinks, getBookmark, getStorage, setStograge } from "./utils";
+import { STORAGE_NAME, STORAGE_MODEL, getLinks, getBookmark, getStorage, setStorage } from "./utils";
 
 function App() {
   const isDataImporting = useSelector(selectDataImporting);
@@ -37,16 +37,37 @@ function App() {
   showLinksFromStorage();
   showBookmarkFromStorage();
   dispatch(setLinksOpened());
+  dispatch(setSearchCount());
+  dispatch(setTranslatedPhrases());
   setWindowSize();
   window.addEventListener("resize", setWindowSize);
+
+  // Fix for firefox new tab extension
+  window.addEventListener("domcontentloaded", () => {
+    document.querySelector("#ask-google-input").focus();
+  });
 
   const update = () => {
     const storage = JSON.parse(getStorage());
     const currentVersion = storage?.config?.buildVersion;
     if (currentVersion !== STORAGE_MODEL.config.buildVersion) {
       localStorage.clear();
-      storage.config.buildVersion = STORAGE_MODEL.config.buildVersion;
-      setStograge({ ...STORAGE_MODEL, ...storage });
+
+      const updatedStorage = {
+        links: storage.links,
+        bookmark: storage.bookmark,
+        stats: {
+          ...STORAGE_MODEL.stats,
+          ...storage.stats,
+        },
+        config: {
+          ...STORAGE_MODEL.config,
+          ...storage.config,
+          buildVersion: STORAGE_MODEL.config.buildVersion,
+        },
+      };
+
+      setStorage(updatedStorage);
       alert("App updated");
     }
   };
