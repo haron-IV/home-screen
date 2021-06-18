@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { getLinksCount } from "../store/links";
 import { selectBookmarkCount } from "../store/bookmarks";
-import { selectOpenedLinks, selectSearchCount } from "../store/stats";
+import { selectOpenedLinks, selectSearchCount, selectTranslatedPhrases } from "../store/stats";
 import "./styles/appFooter.css";
 
 export default function AppHeader(props) {
@@ -9,6 +9,7 @@ export default function AppHeader(props) {
   const bookmarkCount = useSelector(selectBookmarkCount);
   const linksOpened = useSelector(selectOpenedLinks);
   const searchedPhrases = useSelector(selectSearchCount);
+  const translatedPhrases = useSelector(selectTranslatedPhrases);
 
   return (
     <footer className="app-footer">
@@ -52,6 +53,10 @@ export default function AppHeader(props) {
           <li className="single-stat">
             <span className="stat-name">Searched phrases: </span>
             <span className="stat-value">{searchedPhrases}</span>
+          </li>
+          <li className="single-stat">
+            <span className="stat-name">Translated phrases: </span>
+            <span className="stat-value">{translatedPhrases}</span>
           </li>
         </ul>
       </div>

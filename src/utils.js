@@ -5,10 +5,11 @@ const STORAGE_MODEL = {
   stats: {
     linksOpened: 0,
     searchCount: 0,
+    translatedPhrases: 0,
   },
   config: {
     newTabOpening: false,
-    buildVersion: "0.1.2",
+    buildVersion: "0.1.1",
   },
 };
 const getStorage = () => localStorage.getItem(STORAGE_NAME);
@@ -45,6 +46,11 @@ const increaseSearchCount = () => {
   storage.stats.searchCount = storage.stats.searchCount + 1;
   setStorage(storage);
 };
+const increaseTranslatedPhrases = () => {
+  const storage = JSON.parse(getStorage());
+  storage.stats.translatedPhrases = storage.stats.translatedPhrases + 1;
+  setStorage(storage);
+};
 const getStats = () => JSON.parse(getStorage()).stats;
 
 const uuid = () => {
@@ -72,5 +78,6 @@ export {
   setBookmarkLinks,
   increaseOpenedLinks,
   increaseSearchCount,
+  increaseTranslatedPhrases,
   getStats,
 };

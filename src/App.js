@@ -8,7 +8,7 @@ import AppFooter from "./components/appFooter";
 import ImportDataFromBackupModal from "./components/importDataFromBackupModal";
 import { setLinks } from "./store/links";
 import { setBookmark } from "./store/bookmarks";
-import { setLinksOpened, setSearchCount } from "./store/stats";
+import { setLinksOpened, setSearchCount, setTranslatedPhrases } from "./store/stats";
 import { setDeviceWidth } from "./store/appStore";
 import { selectDataImporting } from "./store/menu";
 import "./App.css";
@@ -38,6 +38,7 @@ function App() {
   showBookmarkFromStorage();
   dispatch(setLinksOpened());
   dispatch(setSearchCount());
+  dispatch(setTranslatedPhrases());
   setWindowSize();
   window.addEventListener("resize", setWindowSize);
 
