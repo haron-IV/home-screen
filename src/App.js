@@ -42,6 +42,11 @@ function App() {
   setWindowSize();
   window.addEventListener("resize", setWindowSize);
 
+  // Fix for firefox new tab extension
+  window.addEventListener("domcontentloaded", () => {
+    document.querySelector("#ask-google-input").focus();
+  });
+
   const update = () => {
     const storage = JSON.parse(getStorage());
     const currentVersion = storage?.config?.buildVersion;

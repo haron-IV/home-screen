@@ -21,6 +21,7 @@ export default function AskGoogle() {
     <div className="ask-google">
       <form className="ask-google__form" onSubmit={(e) => askGoogle(e)}>
         <input
+          id="ask-google-input"
           className="ask-google-input"
           type="text"
           placeholder="Ask google"
