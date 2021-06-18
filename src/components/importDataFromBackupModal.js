@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setStograge, STORAGE_MODEL } from "../utils";
+import { setStorage, STORAGE_MODEL } from "../utils";
 import { toggleDataImporting } from "../store/menu";
 import "./styles/addNewLinkModal.css";
 
@@ -17,7 +17,7 @@ export default function ImportDataFromBackupModal() {
     fr.onload = (function () {
       return function (e) {
         jsonBackup = JSON.parse(e.target.result);
-        setStograge({ ...STORAGE_MODEL, ...jsonBackup });
+        setStorage({ ...STORAGE_MODEL, ...jsonBackup });
         window.location.reload();
       };
     })(backupFile);

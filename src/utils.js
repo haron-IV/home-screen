@@ -4,19 +4,20 @@ const STORAGE_MODEL = {
   bookmark: [],
   stats: {
     linksOpened: 0,
+    searchCount: 0,
   },
   config: {
     newTabOpening: false,
-    buildVersion: "0.1.0",
+    buildVersion: "0.1.2",
   },
 };
 const getStorage = () => localStorage.getItem(STORAGE_NAME);
-const setStograge = (storage) => localStorage.setItem(STORAGE_NAME, JSON.stringify(storage));
+const setStorage = (storage) => localStorage.setItem(STORAGE_NAME, JSON.stringify(storage));
 const getLinks = () => JSON.parse(localStorage.getItem(STORAGE_NAME)).links;
 const addNewLink = (link) => {
   const storage = JSON.parse(getStorage());
   storage.links.push(link);
-  setStograge(storage);
+  setStorage(storage);
 };
 const setStorageLinks = (links) => {
   const storage = JSON.parse(getStorage());
@@ -32,12 +33,17 @@ const setBookmarkLinks = (bookmark) => {
 const addBookmarkLink = (bookmarkLink) => {
   const storage = JSON.parse(getStorage());
   storage.bookmark.push(bookmarkLink);
-  setStograge(storage);
+  setStorage(storage);
 };
 const increaseOpenedLinks = () => {
   const storage = JSON.parse(getStorage());
   storage.stats.linksOpened = storage.stats.linksOpened + 1;
-  setStograge(storage);
+  setStorage(storage);
+};
+const increaseSearchCount = () => {
+  const storage = JSON.parse(getStorage());
+  storage.stats.searchCount = storage.stats.searchCount + 1;
+  setStorage(storage);
 };
 const getStats = () => JSON.parse(getStorage()).stats;
 
@@ -56,7 +62,7 @@ export {
   STORAGE_NAME,
   STORAGE_MODEL,
   getStorage,
-  setStograge,
+  setStorage,
   getLinks,
   addNewLink,
   uuid,
@@ -65,5 +71,6 @@ export {
   addBookmarkLink,
   setBookmarkLinks,
   increaseOpenedLinks,
+  increaseSearchCount,
   getStats,
 };

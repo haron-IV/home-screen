@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getStorage, setStograge } from "../utils";
+import { getStorage, setStorage } from "../utils";
 
 const storage = JSON.parse(getStorage());
 
@@ -33,7 +33,7 @@ export const menuSlice = createSlice({
       state.newTabOpening = !state.newTabOpening;
       const storage = JSON.parse(getStorage());
       storage.config.newTabOpening = state.newTabOpening;
-      setStograge(storage);
+      setStorage(storage);
     },
   },
 });
