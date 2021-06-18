@@ -43,8 +43,13 @@ function App() {
   window.addEventListener("resize", setWindowSize);
 
   // Fix for firefox new tab extension
-  window.addEventListener("domcontentloaded", () => {
+  let clicked = false;
+  window.addEventListener("click", (e) => {
+    if (clicked) return;
+    e.stopPropagation();
+    e.preventDefault();
     document.querySelector("#ask-google-input").focus();
+    clicked = true;
   });
 
   const update = () => {
