@@ -1,6 +1,44 @@
 .links-view {
   padding: 20px;
   display: flex;
+  justify-content: space-between;
+}
+
+.links-wrapper {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.translator-wrapper {
+  margin-left: 5rem;
+  width: 350px;
+}
+
+.textfield {
+  width: 100%;
+  height: 125px;
+  background-color: var(--modal-input-bg);
+  border: 1px solid var(--link-border);
+  color: var(--modal-font-color);
+  padding: 1rem;
+  outline: none;
+}
+
+.textfield:focus {
+  border: 1px solid var(--modal-font-color);
+}
+
+.translate-button {
+  background-color: var(--link-bg);
+  border: 2px solid var(--link-border);
+  border-radius: 3px;
+  width: 100%;
+  color: var(--modal-font-color);
+  padding: 5px;
+  outline: transparent;
+  cursor: pointer;
+}
+.translate-button:hover {
+  background-color: var(--link-border);
 }
